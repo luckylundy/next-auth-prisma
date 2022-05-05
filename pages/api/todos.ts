@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 import { getSession } from "next-auth/react";
 
@@ -11,7 +11,6 @@ type Data = {
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   //リクエストを引数に入れ、sessionを返す
   const session = await getSession({ req });
-
   if (!session) return res.status(401).end("Please log in to view");
 
   const userId = session.user.id;

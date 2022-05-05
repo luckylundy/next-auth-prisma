@@ -30,10 +30,9 @@ const options = {
       //sessionの情報にsession.user.idを追加する
       session.user.id = user.id;
       return Promise.resolve(session);
-      console.log(session);
     },
   },
-  secret: "secret",
+  secret: process.env.NEXT_PUBLIC_SECRET,
 };
 
 export default (req, res) => NextAuth(req, res, options);
